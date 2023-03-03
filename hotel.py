@@ -4,6 +4,7 @@ from hotels_df import df, hotel_file
 class Hotel:
     def __init__(self, h_id):
         self.hotel_id = h_id
+        self.name = df.loc[df["id"] == self.hotel_id, "name"].squeeze()
 
     def book_reservation(self):
         """ Books hotel by changing its availability to 'no' """
