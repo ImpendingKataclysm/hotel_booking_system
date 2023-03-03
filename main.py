@@ -1,11 +1,7 @@
 from hotel import Hotel
 # from user import User
 from reservationTicket import ReservationTicket
-
-import pandas
-
-hotel_file = "hotels.csv"
-df = pandas.read_csv(hotel_file)
+from hotels_df import df
 
 if __name__ == "__main__":
     print(df)
