@@ -13,7 +13,7 @@ class Ticket:
         pdf.add_page()
         pdf.set_font(family="Times", size=16, style='B')
         pdf.cell(w=cell_width, h=cell_height, txt=title, ln=1)
-        pdf.cell(w=cell_width, h=cell_height, txt=f"Customer Name: {self.customer_name.title()}", ln=1)
+        pdf.cell(w=cell_width, h=cell_height, txt=f"Customer Name: {self.the_customer_name}", ln=1)
         pdf.cell(w=cell_width, h=cell_height, txt=f"Hotel: {self.booked_hotel.name}", ln=1)
 
         pdf.output(filename)
@@ -24,13 +24,18 @@ class Ticket:
         print(content)
         self.generate_pdf("Ticket booked successfully", "confirmation.pdf")
 
+    @property
+    def the_customer_name(self):
+        name = self.customer_name.strip().title()
+        return name
+
 
 class HotelTicket(Ticket):
     def generate_ticket(self):
         title = "Hotel booked successfully!"
         content = f"""
         {title}
-        Customer Name: {self.customer_name.title()}
+        Customer Name: {self.the_customer_name}
         Hotel: {self.booked_hotel.name}
         """
 
@@ -43,7 +48,7 @@ class SpaTicket(Ticket):
         title = "Spa package booked successfully!"
         content = f"""
         {title}
-        Customer Name: {self.customer_name.title()}
+        Customer Name: {self.the_customer_name}
         Hotel: {self.booked_hotel.name}
         """
 
