@@ -19,6 +19,9 @@ class Hotel:
         else:
             return False
 
+    def __eq__(self, other):
+        return self.hotel_id == other.hotel_id
+
 
 class SpaHotel(Hotel):
     def book_spa_package(self):
