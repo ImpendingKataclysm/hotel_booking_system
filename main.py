@@ -13,7 +13,7 @@ if __name__ == "__main__":
             hotel.book_reservation()
             user_name = input("Enter your name: ")
             reservation_ticket = ReservationTicket(user_name, hotel)
-            print(reservation_ticket.generate_ticket())
+            reservation_ticket.generate_ticket()
         else:
             print("Sorry, that hotel is unavailable.")
     except ValueError:
