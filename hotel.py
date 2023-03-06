@@ -18,3 +18,8 @@ class Hotel:
             return True
         else:
             return False
+
+
+class SpaHotel(Hotel):
+    def book_spa_package(self):
+        print("Booking spa package...")

@@ -154,3 +154,6 @@ cython_debug/
 /hotels.csv
 /cards.csv
 /confirmation.pdf
+/card_security.csv
+/spa_confirmation.pdf
+/hotel_confirmation.pdf

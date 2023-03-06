@@ -1,4 +1,4 @@
-from dataframes import card_df
+from dataframes import card_df, secure_card_df
 
 
 class CreditCard:
@@ -13,6 +13,12 @@ class CreditCard:
         return card_data in card_df
 
 
+class SecureCreditCard(CreditCard):
+    def authenticate(self, given_password):
+        password = secure_card_df.loc[secure_card_df["number"] == self.number, "password"].squeeze()
+        return given_password == password
+
+
 if __name__ == "__main__":
-    my_card = CreditCard("1357")
-    print(my_card.validate("katie janzen", "12/29", "777"))
+    my_card = SecureCreditCard("1357")
+    my_card.authenticate("mypass3")
