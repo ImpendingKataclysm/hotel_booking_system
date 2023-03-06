@@ -6,15 +6,16 @@ class Ticket:
         self.customer_name = name
         self.booked_hotel = hotel
 
-    def generate_pdf(self, title, filename):
+    @staticmethod
+    def generate_pdf(title, filename, customer, booked_hotel):
         pdf = FPDF(orientation='P', unit="mm", format="A4")
         cell_width = 50
         cell_height = 8
         pdf.add_page()
         pdf.set_font(family="Times", size=16, style='B')
         pdf.cell(w=cell_width, h=cell_height, txt=title, ln=1)
-        pdf.cell(w=cell_width, h=cell_height, txt=f"Customer Name: {self.the_customer_name}", ln=1)
-        pdf.cell(w=cell_width, h=cell_height, txt=f"Hotel: {self.booked_hotel.name}", ln=1)
+        pdf.cell(w=cell_width, h=cell_height, txt=f"Customer Name: {customer}", ln=1)
+        pdf.cell(w=cell_width, h=cell_height, txt=f"Hotel: {booked_hotel}", ln=1)
 
         pdf.output(filename)
 
@@ -22,7 +23,10 @@ class Ticket:
         content = "Thank you for your reservation!"
 
         print(content)
-        self.generate_pdf("Ticket booked successfully", "confirmation.pdf")
+        self.generate_pdf("Ticket booked successfully",
+                          "confirmation.pdf",
+                          self.the_customer_name,
+                          self.booked_hotel.name)
 
     @property
     def the_customer_name(self):
@@ -40,7 +44,7 @@ class HotelTicket(Ticket):
         """
 
         print(content)
-        self.generate_pdf(title, "hotel_confirmation.pdf")
+        self.generate_pdf(title, "hotel_confirmation.pdf", self.the_customer_name, self.booked_hotel.name)
 
 
 class SpaTicket(Ticket):
@@ -53,4 +57,4 @@ class SpaTicket(Ticket):
         """
 
         print(content)
-        self.generate_pdf(title, "spa_confirmation.pdf")
+        self.generate_pdf(title, "spa_confirmation.pdf", self.the_customer_name, self.booked_hotel.name)
