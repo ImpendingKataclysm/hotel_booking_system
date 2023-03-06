@@ -1,7 +1,8 @@
 from fpdf import FPDF
+from abc import ABC, abstractmethod
 
 
-class Ticket:
+class Ticket(ABC):
     def __init__(self, name, hotel):
         self.customer_name = name
         self.booked_hotel = hotel
@@ -19,14 +20,9 @@ class Ticket:
 
         pdf.output(filename)
 
+    @abstractmethod
     def generate_ticket(self):
-        content = "Thank you for your reservation!"
-
-        print(content)
-        self.generate_pdf("Ticket booked successfully",
-                          "confirmation.pdf",
-                          self.the_customer_name,
-                          self.booked_hotel.name)
+        pass
 
     @property
     def the_customer_name(self):
