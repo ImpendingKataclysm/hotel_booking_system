@@ -152,3 +152,5 @@ cython_debug/
 .idea/
 /planning.txt
 /hotels.csv
+/cards.csv
+/confirmation.pdf

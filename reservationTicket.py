@@ -7,7 +7,7 @@ class ReservationTicket:
         self.booked_hotel = hotel
 
     def generate_ticket(self):
-        name_info = f"Name: {self.customer_name}"
+        name_info = f"Name: {self.customer_name.title()}"
         hotel_info = f"Hotel: {self.booked_hotel.name}"
         content = f"""
         Thank you for your reservation!
@@ -16,7 +16,7 @@ class ReservationTicket:
         {hotel_info}
         """
 
-        # print(content)
+        print(content)
 
         pdf = FPDF(orientation='P', unit="mm", format="A4")
         cell_width = 50
